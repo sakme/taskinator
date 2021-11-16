@@ -164,7 +164,6 @@ var taskStatusChangeHandler = function(event) {
     var taskId = event.target.getAttribute("data-task-id");
     var statusValue = event.target.value.toLowerCase();
     var taskSelected = document.querySelector(".task-item[data-task-id='" + taskId + "']");
-    console.log(event.target);
 
     if (statusValue === "to do") {
         tasksToDoEl.appendChild(taskSelected);
@@ -174,7 +173,7 @@ var taskStatusChangeHandler = function(event) {
         tasksCompletedEl.appendChild(taskSelected);
     }
 
-    for (var i; i < tasks.length; i++) {
+    for (var i = 0; i < tasks.length; i++) {
         if (tasks[i].id === parseInt(taskId)) {
             tasks[i].status = statusValue;
         }
@@ -232,16 +231,14 @@ var loadTasks = function() {
 
         var taskActionsEl = createTaskActions(taskIdCounter);
         listItemEl.appendChild(taskActionsEl);
-
-        if (tasks[i].status = "to do") {
+        
+        if (tasks[i].status === "to do") {
             tasksToDoEl.appendChild(listItemEl);
-        } else if (tasks[i].status = "in progress") {
+        } else if (tasks[i].status === "in progress") {
             tasksInProgressEl.appendChild(listItemEl);
-        } else if (tasks[i].status = "completed") {
+        } else if (tasks[i].status === "completed") {
             tasksCompletedEl.appendChild(listItemEl);
         }
-        
-        console.log(listItemEl);
     }
 };
 
